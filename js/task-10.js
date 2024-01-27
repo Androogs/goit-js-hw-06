@@ -1,14 +1,17 @@
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
-    .padStart(6, 0)}`;
+    .padStart(6, "0")}`;
 }
 
 function createBoxes(amount) {
+  // Eliminar cuadros existentes antes de crear nuevos
+  destroyBoxes();
+
   let width = 30;
   for (let i = 0; i < amount; i++) {
     let newBox = document.createElement("div");
-    newBox.setAttribute("id", `box`);
+    newBox.setAttribute("id", `box${i}`); // Cambiado el id para que sea único
     newBox.style.width = `${width}px`;
     newBox.style.height = `${width}px`;
     newBox.style.background = `${getRandomHexColor()}`;
